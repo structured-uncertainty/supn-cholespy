@@ -1,6 +1,0 @@
-[submodule "ext/suitesparse-metis-for-windows"]
-    path = ext/suitesparse-metis-for-windows
-    url = https://github.com/bathal1/suitesparse-metis-for-windows
-[submodule "ext/nanobind"]
-	path = ext/nanobind
-	url = https://github.com/wjakob/nanobind

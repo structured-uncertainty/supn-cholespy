@@ -14,7 +14,8 @@ We include a Dockerfile based on `nvidia/cuda:12.9.1-devel-ubuntu22.04` so nvidi
 
 Please make sure you have `nvidia docker` installed first then follow these instructions:
 ```
-# Clone repository..
+# Clone repository (NOTE: the recursive flag is important!)
+git clone --recursive https://github.com/structured-uncertainty/supn-cholespy.git
 
 cd supn-cholespy
 
