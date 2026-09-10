@@ -9,7 +9,7 @@ if (NOT SKBUILD)
 endif()
 
 #  Check if submodules have been checked out, or fail early
-if (NOT IS_DIRECTORY "${CMAKE_CURRENT_SOURCE_DIR}/ext/suitesparse-metis-for-windows/cmake")
+if (NOT IS_DIRECTORY "${CMAKE_CURRENT_SOURCE_DIR}/ext/suitesparse-metis-for-windows/cmake" AND WIN32)
   message(FATAL_ERROR "The dependencies are missing! "
     "You probably did not clone the project with --recursive. It is possible to recover "
     "by invoking\n$ git submodule update --init --recursive")
@@ -53,9 +53,13 @@ add_subdirectory(${CMAKE_CURRENT_SOURCE_DIR}/ext/nanobind)
 #find_package(nanobind CONFIG REQUIRED)
 
 # CHOLMOD package
-add_subdirectory(ext/suitesparse-metis-for-windows)
-include_directories("${suitesparseconfig_SOURCE_DIR}")
-include_directories("${CHOLMOD_SOURCE_DIR}/Include")
+if (WIN32)
+  add_subdirectory(ext/suitesparse-metis-for-windows)
+  include_directories("${suitesparseconfig_SOURCE_DIR}")
+  include_directories("${CHOLMOD_SOURCE_DIR}/Include")
+else()
+  include_directories("/usr/include/suitesparse")
+endif()
 
 nanobind_add_module(
   _cholespy_core NB_STATIC
@@ -67,7 +71,9 @@ nanobind_add_module(
   src/docstr.h               src/main.cpp)
 
 set_property(TARGET _cholespy_core PROPERTY POSITION_INDEPENDENT_CODE ON)
-set_property(TARGET metis PROPERTY POSITION_INDEPENDENT_CODE ON)
+if (WIN32)
+  set_property(TARGET metis PROPERTY POSITION_INDEPENDENT_CODE ON)
+endif()
 target_compile_features(_cholespy_core PRIVATE cxx_std_17)
 target_link_libraries(_cholespy_core PUBLIC cholmod)
 

@@ -64,5 +64,6 @@ ENV CMAKE_POLICY_VERSION_MINIMUM=3.5
 
 # Do the actual install
 RUN pip install develop .
+
 # Clean up to reduce image size
 RUN apt-get clean && rm -rf /var/lib/apt/lists/*
