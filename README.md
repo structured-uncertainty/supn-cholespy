@@ -24,7 +24,7 @@ docker build -t supn-cholespy-image .
 
 # Now start it in interactive mode with GPUs, binding your home directory to /home. 
 # Note: This sets the shared memory size to 16gb - this *may* be too large.
-docker run -it --shm-size=16gb --gpus all --rm -v /path/to/project/directory:/home -w /home supn-cholespy-image bash
+docker run -it --shm-size=16gb --gpus all --rm -v /path/to/repository:/home -w /home supn-cholespy-image bash
 ```
 
 To test the installation, you should be able to run the `tests/supn_test.py` script inside the docker instance.

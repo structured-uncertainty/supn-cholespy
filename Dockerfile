@@ -50,10 +50,10 @@ RUN pip install numpy==1.24.4
 RUN pip install ninja scikit-build scikit-sparse
 
 # Set the working directory (within the container)
-WORKDIR /home/supn_cholespy
+WORKDIR /home/supn-cholespy
 
 # Copy your package source code to the image
-COPY . /home/supn_cholespy
+COPY . /home/supn-cholespy
 
 # update(due to nanobind API update): initialise submodules and check out correct nanobind version
 RUN git submodule update --init --recursive && \
