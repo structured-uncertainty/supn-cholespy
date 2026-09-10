@@ -10,7 +10,7 @@ We recommend that the package be used inside a Docker image and include a Docker
 
 ## Use via Dockerfile
 
-We include a Dockerfile based on `nvidia/cuda:12.9.1-devel-ubuntu22.04` so nvidia with CUDA 12.9.1 and based on ubuntu 22.04.
+We include a Dockerfile based on `nvidia/cuda:13.2.0-devel-ubuntu24.04` so nvidia with CUDA 13.2.0 and based on ubuntu 24.04.
 
 Please make sure you have `nvidia docker` installed first then follow these instructions:
 ```

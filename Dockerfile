@@ -1,4 +1,4 @@
-FROM nvidia/cuda:12.9.1-devel-ubuntu22.04
+FROM nvidia/cuda:13.2.0-devel-ubuntu24.04
 
 
 ARG DEBIAN_FRONTEND=noninteractive
@@ -35,7 +35,7 @@ RUN curl https://bootstrap.pypa.io/get-pip.py -o get-pip.py
 RUN python get-pip.py
 
 # Install Python libraries
-RUN pip install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cu118
+RUN pip install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cu130
 
 # Install specific packages for building SUPN Cholespy
 RUN apt-get update && apt-get install -y \
