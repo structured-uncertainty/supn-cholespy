@@ -1,0 +1,9 @@
+build*
+.vscode/*
+
+__pycache__
+
+*.egg-info/
+_skbuild/
+
+SuiteSparse/
